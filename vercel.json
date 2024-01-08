@@ -7,12 +7,12 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "app.py"
+            "src": "/views.py",
+            "dest": "views.py"
         },
         {
-            "src": "/views.py",
-            "use": "@vercel/python"
+            "src": "/(.*)",
+            "dest": "app.py"
         }
     ]
 }
