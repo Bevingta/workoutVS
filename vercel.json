@@ -3,7 +3,11 @@
         {
             "src": "app.py",
             "use": "@vercel/python"
-        }
+        },
+        {
+            "src": "api/views.py",
+            "use": "@vercel/python"
+          }
     ],
     "routes": [
         {
