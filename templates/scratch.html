@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Scribble">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert+One">
+</head>
+
+<style>
+
+    body {
+        background-image: radial-gradient(circle, #353d48, #343e4f, #343f55, #353f5b, #373f61);
+        font-family: Times;
+    }
+
+    .title {
+        font-family: Concert One;
+        font-variant: small-caps;
+        font-weight: 100;
+        color: #e08484;
+        text-align: center;
+        font-size: 150px;
+        margin-bottom: 10px;
+    }
+
+    .placing {
+        display: inline-block;
+        margin-right: 0px;
+        margin-left: 90px;;
+        text-align: center;
+        color: #fff;
+        font-size: 70px;
+        font-family: Concert One;
+        vertical-align: bottom;
+        line-height: 50px;
+        margin-top: 50px;
+        width: 20%;
+    }
+
+    .medalistScore {
+        font-size: 40px;
+        background-color: #86B7B8;
+        border-radius: 25px;
+        margin-top: 10px;
+    }
+
+    .first{
+        border-radius: 10px;
+        height: 350px;
+        background-color: #e08484;
+    }
+
+    .second {
+        border-radius: 10px;
+        height: 250px;
+        background-color: #e08484;
+    }
+
+    .third {
+        border-radius: 10px;
+        height: 200px;
+        background-color: #e08484;
+    }
+
+    .medal {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        margin-top: 30px;
+        border-radius: 100px;
+        border: 35px solid #e08484;
+    }
+
+    .runner-up-title {
+        color: #FFFFFF;
+        font-size: 80px;
+        font-family: Concert One;
+        font-variant: small-caps;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .runner-ups {
+        color: #FFFFFF;
+        font-size: 50px;
+        font-family: Concert One;
+        margin: auto;
+        margin-left: 17.5%;
+        margin-right: 17.5%;
+        margin-bottom: 80px;
+    }
+
+    .leaderboardPerson {
+        color: #FFFFFF;
+        font-size: 50px;
+        font-family: Concert One;
+    }
+
+    .entryTitle {
+        font-family: Concert One;
+        font-variant: small-caps;
+        font-size: 70px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    select {
+        PopupWidth: 100px;
+        font-family: Concert One;
+        font-variant: small-caps;
+        margin: auto;
+        font-size: 50px;
+        text-align: center;
+        color: #353D48;
+        background: #e08484;
+        width: 80%;
+        padding: 0px; /* Some padding */
+        border: 0px solid #ccc; /* Gray border */
+        border-radius: 50px; /* Rounded borders */
+        box-sizing: border-box; /* Make sure that padding and width stays in place */
+        margin-bottom: 16px; /* Bottom margin */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+
+    .textEntry {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 16px;
+        color: #FFFFFF;
+        background-color: #353D48;
+        border: 3px solid #e08484;
+    }
+
+    .textEntry::placeholder {
+        font-size: 35px;
+    }
+
+    .submit {
+        font-family: Concert One;
+        font-variant: small-caps;
+        width: 50%;
+        margin: auto;
+        border-radius: 50px;
+        background: #86B7B8;
+        height: 60px;
+        box-shadow: 0 0 20px #353D48;
+        font-size: 50px;
+        text-align: center;
+        color: #353D48;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        margin-bottom: 150px;
+    }
+
+    .image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+    hr {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .date {
+        font-family: Concert One;
+        width: 50%;
+        height: 80px;
+        font-size: 40px;
+        border-radius: 50px;
+        border: 3px solid #353D48;
+        background: #e08484;
+        text-align: center;
+        margin-left: 25%;
+        margin-bottom: 30px;
+        color: #353D48;
+    }
+
+    .date::-webkit-calendar-picker-indicator {
+        color: #353D48;
+        opacity: .8;
+        display: block;
+        background-repeat:  no-repeat;
+        width: 50px;
+        height: 25px;
+    }
+
+
+</style>
+
+<body>
+
+<h1 class="title">Leaderboard</h1>
+
+<hr color="#86B7B8">
+
+<div class="podium">
+    {% for name, score in leaderboard.items() %}
+        {% if loop.index == 2 %}
+        <div class="placing">
+            <div class="medalist">{{ name }}</div>
+            <div class="medalistScore">{{ score }} days
+            </div>
+            <div class="second">
+                <div class="medal">2nd</div>
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+
+    {% for name, score in leaderboard.items() %}
+        {% if loop.index == 1 %}
+        <div class="placing">
+            <div class="medalist">{{ name }}</div>
+            <div class="medalistScore">{{ score }} days
+            </div>
+            <div class="first">
+                <div class="medal">1st</div>
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+
+    {% for name, score in leaderboard.items() %}
+        {% if loop.index == 3 %}
+        <div class="placing">
+            <div class="medalist">{{ name }}</div>
+            <div class="medalistScore">{{ score }} days
+            </div>
+            <div class="third">
+                <div class="medal">3rd</div>
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<h2 class="runner-up-title" align="center">Runner-ups</h2>
+
+<table class="runner-ups">
+    {% for name, score in leaderboard.items() %}
+        {% if loop.index > 3 %}
+        <tbody>
+            <tr>
+                <td class="rank">{{ loop.index }}.</td>
+                <td class="padding" width="5%"></td>
+                <td class="person">{{ name }}</td>
+                <td class="padding" width="20%"></td>
+                <td class="total">Workouts: {{ score }}</td>
+            </tr>
+        </tbody>
+    {% endif %}
+    {% endfor %}
+</table>
+
+<hr color="#86B7B8">
+
+<h2 class="entryTitle">Log Workout</h2>
+
+<div class="newWorkout">
+    <form action="submit_form()">
+        <select id="name" name="name" required>
+            <option value="" disabled selected hidden>Select Person...</option>
+            <option value="Drew">Drew</option>
+            <option value="Kevin">Kevin</option>
+            <option value="Sawyer">Sawyer</option>
+            <option value="Sophia">Sophia</option>
+            <option value="Brady">Brady</option>
+        </select>
+        <input id="date" type="date" class="date">
+        <textarea id="workoutDetails" name="workoutDetails" required class="textEntry" placeholder="Describe your workout..."></textarea>
+
+        <button type="button" class="submit" onclick="
+            runCouchScript(
+                document.getElementById('name').value,
+                document.getElementById('date').value,
+                document.getElementById('workoutDetails').value
+            )">Log Workout</button>
+    </form>
+</div>
+
+<img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/79325/dumbbell-clipart-xl.png" alt="Gym" width="800px" class="image">
+</body>
+</html>
