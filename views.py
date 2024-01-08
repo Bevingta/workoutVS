@@ -14,6 +14,10 @@ leaderboard_data = {
 }
 
 
+client = MongoClient('mongodb+srv://bevingtonan:1234@cluster0.m2wnxuj.mongodb.net/?retryWrites=true&w=majority')
+db = client["workout"]
+collection = db["people"]
+
 #uses the block stuff in HTML to change the website view
 names = ["Drew", "Kevin", "Sophia", "Sawyer", "Brady", "Trevor"]
 totals = {}
@@ -34,6 +38,7 @@ async def count_name_occurrences(database_name, collection_name, target_name, lo
         totals[target_name] = count
     else:
         print(f"The name '{target_name}' does not exist in the collection.")
+        totals[target_name] = 0
 
     # Close the MongoDB connection
     client.close()
@@ -51,4 +56,23 @@ async def profile():
 
     # Run tasks concurrently
     await asyncio.gather(*tasks)
-    return render_template('scratch.html', leaderboard=totals)
+    sorted_totals = dict(sorted(totals.items(), key=lambda item: item[1], reverse=True))
+    return render_template('scratch.html', leaderboard=sorted_totals)
+
+
+@views.route('/add_data', methods=['POST'])
+def add_data():
+    if request.method == 'POST':
+        # Get data from the form
+        data_to_add = {
+            'name': request.form['key1'],
+            'date': request.form['key2'],
+            'description': request.form['key3']
+        }
+
+        # Insert data into MongoDB
+        collection.insert_one(data_to_add)
+
+        print("Stuff added")
+
+        return redirect(url_for('views.profile'))
