@@ -5,15 +5,6 @@ import asyncio
 
 views = Blueprint(__name__, "views")
 
-leaderboard_data = {
-    'Drew': 5,
-    'Kevin': 7,
-    'Sophia': 3,
-    'Brady': 0,
-    'Sawyer': 0
-}
-
-
 client = MongoClient('mongodb+srv://bevingtonan:1234@cluster0.m2wnxuj.mongodb.net/?retryWrites=true&w=majority')
 db = client["workout"]
 collection = db["people"]
