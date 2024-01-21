@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Scribble">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert+One">
+</head>
+
+<style>
+    .heading {
+        font-size: 200px;
+        text-align: center;
+        font-family: Concert One;
+    }
+</style>
+
+
+<body>
+    <h1 class="heading">Log</h1>
+    {% for name, log in descriptions%}
+    <h2 class="name">{{ name }}</h2>
+    <h3 class="description">{{ desciption }}</h3>
+    {% endfor %}
+</body>
+</html>

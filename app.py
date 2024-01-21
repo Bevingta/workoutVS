@@ -13,7 +13,7 @@ db = client["workout"]
 collection = db["people"]
 
 # Names for profile view
-names = ["Drew", "Kevin", "Sophia", "Sawyer", "Brady", "Trevor"]
+names = ["Drew", "Kevin", "Sophia", "Sawyer", "Brady", "Trevor", "Lizzy"]
 totals = {}
 
 
@@ -72,6 +72,20 @@ def add_data():
         print("Stuff added")
 
         return redirect(url_for('profile'))
+    
+
+descriptions = [
+    ["Drew", "Chest day todya. Felt pretty good. Nothing too insane"],
+    ["Kevin", "Leg day so did chest press and incline bench"],
+    ["Sawyer", "did nothing today. This one is going to be used as a test for something which is very long and probably going to have to wrap around for a few lines of text"],
+    ["Sophia", "Ran a lot today because I enjoy it for some weird reason"],
+    ["Brady", "Did decline bench. Only person in the gym doing it"],
+    ["Drew", "Rode a bike for like 30 mins. "]
+]
+
+@app.route('/log')
+def log():
+    return render_template('log.html', descriptions)
 
 
 if __name__ == "__main__":
